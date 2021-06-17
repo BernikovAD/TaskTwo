@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         decryptData(price, 33, 0, 5);
         decryptData(price, 13, 3, 1);
     }
-
 
     public @Nullable
     int[] decryptData(@NonNull int[] price,
