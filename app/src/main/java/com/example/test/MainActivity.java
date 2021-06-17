@@ -45,24 +45,21 @@ public class MainActivity extends AppCompatActivity {
         decryptData(price, 13, 3, 1);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public @Nullable
     int[] decryptData(@NonNull int[] price,
                       @IntRange(from = 1) int discount,
                       @IntRange(from = 0) int offset,
                       @IntRange(from = 1) int readLength) {
-
-        ArrayList<Integer> newPrice = new ArrayList<>();
-        for (int i = offset; i < (offset + readLength); i++) {
-            newPrice.add(calculatePercentage(price[i], discount));
+        int[] newPrice = new int[readLength];
+        for (int i = offset, j = 0; i < (offset + readLength); i++, j++) {
+            newPrice[j] = calculatePercentage(price[i], discount);
         }
-        Integer[] arr = (newPrice.toArray(new Integer[newPrice.size()]));
-        int result[] = Arrays.stream(arr).mapToInt(i -> (int) i).toArray();
-        System.out.println(Arrays.toString(result));
-        return result;
+        System.out.println(Arrays.toString(newPrice));
+        return newPrice;
     }
 
-    int calculatePercentage(int price, int discount) {
+    private int calculatePercentage(int price, int discount) {
         double n = price * (100 - discount) / 100;
         return (int) n;
     }
